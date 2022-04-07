@@ -87,6 +87,7 @@ while 문을 통해서 p1 과 p2 를 통해서 num1 , num2 과 비교한후 answ
 
 p1 이 남아있으면 while 다시 돌리고 p2 가 남아있으면 while 문 돌리면됨.
 
+---
 
 ### 2. 공통원소 구하기(**Two pointers**)
 
@@ -235,6 +236,7 @@ public class Main {
 
 → 아니면 p2 증감처리 return;
 
+---
 
 ### 3. 최대매출 (Sliding Window) → O(n2) 이중포문 말구 O(n) 으로
 
@@ -314,6 +316,8 @@ public class Main {
     슬라이딩 형식으로 합산하고 빼준후 → return;
     
 
+---
+
 ### 4. 연속 부분수열 → 이중 포문은 O(n2) 이여서 X → O(n) 으로 구현해야 맞음(투포인트 알고리즘 , 슬라이딩 윈도우 알고리즘)
 
 설명
@@ -388,6 +392,7 @@ public class Main {
     이중포문 O(n2) 으로 푸는것보다 O(n) 으로 풀어야 통과
     
 
+---
 
 ### 5. 연속된 자연수의 합(**Two pointers**)
 
@@ -460,7 +465,7 @@ public class Main {
 }
 ```
 
-
+---
 
 ### 6. 최대 길이 연속부분 수열
 
@@ -536,3 +541,5 @@ public class Main {
 - 풀이
 
 rt 가 0 을 만나면 cnt ++ 증가(1로 바꿨다고 생각) → 최대수열 길이 answer 에 저장 → while 문은 cnt 가 k 초과시 조정 해줘야함 → cnt - - 후에 lt ++ 처리(0 를 1로 바꾼 횟수를 차감) 최대 수열길이는 반영 X→ → return;
+
+---
