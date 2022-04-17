@@ -70,7 +70,6 @@ public class Main {
 
 - min 은 해당 인덱스 값으로 고정하면서 계속 for 문을 돈다
 
----
 
 ## 2. 버블정렬(On2)
 
@@ -186,7 +185,6 @@ public class Main {
 }
 ```
 
----
 
 ## **3. 삽입 정렬**
 
@@ -304,8 +302,6 @@ public class Main {
 }
 ```
 
----
-
 ## **4. Least Recently Used**
 
 설명
@@ -390,7 +386,7 @@ public class Main {
 }
 ```
 
----
+
 
 ## **5. 중복 확인**
 
