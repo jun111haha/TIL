@@ -828,7 +828,7 @@ N 은 상자의 세로 칸의 수를 나타낸다. 단, 2 ≤ M, N ≤ 1,000 이
 
 토마토가 모두 익지는 못하는 상황이면 -1을 출력해야 한다.
 
-![스크린샷 2022-05-03 오후 11.58.07.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f1c81a05-ec39-43ac-ae21-59434029e1e7/스크린샷_2022-05-03_오후_11.58.07.png)
+![https://www.notion.so/DFS-BFS-1084832c99fd48ab9c1e4bd6ea110caa#94985ae802414ef2ba381a14f2ad7bb2]
 
 ```java
 package Main;
