@@ -1,5 +1,3 @@
-# **Greedy Algorithm**
-
 ## **1. 씨름 선수**
 
 - 설명
@@ -120,3 +118,73 @@ class Main {
 출력
 
 첫째 줄에 최대 사용할 수 있는 회의 수를 출력하여라.
+
+```java
+package Main;
+
+import java.util.*;
+
+/*
+* 입력 예시
+5
+1 4
+2 3
+3 5
+4 6
+5 7
+
+* 출력예시
+* 3
+* */
+
+class Time implements Comparable<Time>{
+    int s;
+    int e;
+    public Time(int s, int e){
+        this.s = s;
+        this.e = e;
+    }
+
+    @Override
+    public int compareTo(Time o) {
+        //끝나는시간이 같으면? 시작시간으로 오름차순으로 정렬 (음수)
+        if(this.e == o.e){
+            return this.s - o.s;
+        //끝나는시간이 다르면? 끝나는시간으로 오름차순 정렬 (음수)
+        }else{
+            return this.e - o.e;
+        }
+    }
+}
+
+class Main {
+    public static int solution(ArrayList<Time> arr, int n ){
+        int et  = 0;
+        int cnt = 0;
+        Collections.sort(arr); //오름차순
+        for(Time time : arr){
+            //회의시작하는 시간이 끝나는시점보다 크거나 같으면?
+            if(time.s >= et){
+                //끝나는 시간 교체작업
+                et = time.e;
+                cnt++;
+            }
+        }
+        return cnt;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        ArrayList<Time> arr = new ArrayList<>();
+
+        for(int i =0; i<n; i++){
+            int s = scanner.nextInt();
+            int e = scanner.nextInt();
+            arr.add(new Time(s , e));
+        }
+
+        System.out.println(solution(arr, n));
+    }
+}
+```
