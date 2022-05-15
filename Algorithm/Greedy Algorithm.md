@@ -350,8 +350,10 @@ class Lecture implements Comparable<Lecture>{
     @Override
     public int compareTo(Lecture money) {
         if(this.money == money.money){
+	//내림차순으로 정렬
             return money.money - this.money;
         }else{
+	//내림차순으로 정렬
             return money.date - this.date;
         }
     }
