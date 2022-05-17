@@ -690,7 +690,7 @@ class Main {
         int m = scanner.nextInt();
         //인접리스트
         ArrayList<ArrayList<Edge>> graph = new ArrayList<ArrayList<Edge>>();
-        
+
         for(int i=0; i<=n; i++){
             graph.add(new ArrayList<Edge>());
         }
@@ -712,7 +712,7 @@ class Main {
         while (!pQ.isEmpty()){
             Edge tmp = pQ.poll();
             int ev = tmp.vex;
-            //방문한곳 1로 체크
+            //회로가 되는것을 방지
             if(ch[ev] == 0){
                 ch[ev] = 1;
                 answer += tmp.cost;
