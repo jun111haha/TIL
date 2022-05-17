@@ -328,15 +328,16 @@ import java.util.*;
 
 /*
 * 입력 예시
-5
-14 18
-12 15
-15 20
-20 30
-5 14
+6
+50 2
+20 1
+40 2
+60 3
+30 3
+30 1
 
 * 출력예시
-* 2
+* 5
 * */
 
 class Lecture implements Comparable<Lecture>{
@@ -350,10 +351,8 @@ class Lecture implements Comparable<Lecture>{
     @Override
     public int compareTo(Lecture money) {
         if(this.money == money.money){
-	//내림차순으로 정렬
             return money.money - this.money;
         }else{
-	//내림차순으로 정렬
             return money.date - this.date;
         }
     }
@@ -409,6 +408,322 @@ class Main {
         }
 
         System.out.println(solution(arr, max));
+    }
+}
+```
+
+## **6. 친구인가? (Disjoint-Set : Union&Find)**
+
+설명
+
+오늘은 새 학기 새로운 반에서 처음 시작하는 날이다. 현수네 반 학생은 N명이다. 현수는 각 학생들의 친구관계를 알고 싶다.
+
+모든 학생은 1부터 N까지 번호가 부여되어 있고, 현수에게는 각각 두 명의 학생은 친구 관계가 번호로 표현된 숫자쌍이 주어진다.
+
+만약 (1, 2), (2, 3), (3, 4)의 숫자쌍이 주어지면 1번 학생과 2번 학생이 친구이고, 2번 학생과 3번 학생이 친구, 3번 학생과 4번 학생이 친구이다.
+
+그리고 1번 학생과 4번 학생은 2번과 3번을 통해서 친구관계가 된다.
+
+학생의 친구관계를 나타내는 숫자쌍이 주어지면 특정 두 명이 친구인지를 판별하는 프로그램을 작성하세요.
+
+두 학생이 친구이면 “YES"이고, 아니면 ”NO"를 출력한다.
+
+입력
+
+첫 번째 줄에 반 학생수인 자연수 N(1<=N<=1,000)과 숫자쌍의 개수인 M(1<=M<=3,000)이 주어지고,
+
+다음 M개의 줄에 걸쳐 숫자쌍이 주어진다.
+
+마지막 줄에는 두 학생이 친구인지 확인하는 숫자쌍이 주어진다.
+
+출력
+
+첫 번째 줄에 “YES"또는 "NO"를 출력한다.
+
+```java
+package Main;
+
+import java.util.*;
+
+/*
+* 입력 예시
+9 7
+1 2
+2 3
+3 4
+1 5
+6 7
+7 8
+8 9
+3 8
+
+* 출력예시
+* NO
+* */
+
+class Main {
+    static int[] unf;
+    public static int Find(int v){
+        if(v==unf[v]){
+            return v;
+        }else{
+            return unf[v] = Find(unf[v]);
+        }
+    }
+
+    public static void Union(int a, int b){
+        int fa = Find(a);
+        int fb = Find(b);
+        if(fa != fb) unf[fa] = fb;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int m = scanner.nextInt();
+        unf = new int[n + 1];
+        for(int i= 1; i<=n; i++){
+            unf[i] = i;
+        }
+        for(int i= 1; i<=m; i++){
+            int a = scanner.nextInt();
+            int b = scanner.nextInt();
+            Union(a, b);
+        }
+
+        int a = scanner.nextInt();
+        int b = scanner.nextInt();
+        int fa = Find(a);
+        int fb = Find(b);
+        if(fa == fb){
+            System.out.println("YES");
+        }else{
+            System.out.println("NO");
+        }
+
+    }
+}
+```
+
+## **7. 원더랜드(최소스패닝트리)**
+
+설명
+
+원더랜드에 문제가 생겼다. 원더랜드의 각 도로를 유지보수하는 재정이 바닥난 것이다.
+
+원더랜드는 모든 도시를 서로 연결하면서 최소의 유지비용이 들도록 도로를 선택하고 나머지 도로는 폐쇄하려고 한다.
+
+아래의 그림은 그 한 예를 설명하는 그림이다.
+
+![https://cote.inflearn.com/public/upload/7d06ee1336.jpg](https://cote.inflearn.com/public/upload/7d06ee1336.jpg)
+
+위의 지도는 각 도시가 1부터 9로 표현되었고, 지도의 오른쪽은 최소비용 196으로 모든 도시를 연결하는 방법을 찾아낸 것이다.
+
+입력
+
+첫째 줄에 도시의 개수 V(1≤V≤100)와 도로의 개수 E(1≤E≤1,000)가 주어진다.
+
+다음 E개의 줄에는 각 도로에 대한 정보를 나타내는 세 정수 A, B, C가 주어진다.
+
+이는 A번 도시와 B번 도시가 유지비용이 C인 도로로 연결되어 있다는 의미이다.
+
+출력
+
+모든 도시를 연결하면서 드는 최소비용을 출려한다.
+
+1. 크루스칼 알고리즘(Union & Find)
+
+```java
+package Main;
+
+import java.util.*;
+
+/*
+* 입력 예시
+9 12
+1 2 12
+1 9 25
+2 3 10
+2 8 17
+2 9 8
+3 4 18
+3 7 55
+4 5 44
+5 6 60
+5 7 38
+7 8 35
+8 9 15
+
+* 출력예시
+* 196
+* */
+
+class Edge implements Comparable<Edge>{
+    public int v1;
+    public int v2;
+    public int cost;
+
+    Edge(int v1, int v2, int cost){
+        this.v1 = v1;
+        this.v2 = v2;
+        this.cost = cost;
+    }
+
+    @Override
+    public int compareTo(Edge ob){
+        return this.cost - ob.cost;
+    }
+}
+
+/*
+*   그래프는 회로가 존재하며 트리는 존재하지 않는다.
+*   트리 간선의 갯수 = 정점의 갯수 - 1
+*   때문에 Union & Find을 사용하여 회로가 존재하지 않도록 구현해야 한다.
+* */
+class Main {
+    static int[] unf;
+    public static int Find(int v){
+        if(v == unf[v]){
+            return v;
+        } else{
+            return unf[v] = Find(unf[v]);
+        }
+    }
+
+    public static void Union(int a, int b){
+        int fa = Find(a);
+        int fb = Find(b);
+
+        if(fa != fb){
+            unf[fa] = fb;
+        }
+    }
+
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int m = scanner.nextInt();
+        unf = new int[n+1];
+        ArrayList<Edge> arr = new ArrayList<>();
+
+        for(int i=1; i<=n; i++){
+            unf[i] = i;
+        }
+
+        for(int i=1; i<=m; i++){
+            int a = scanner.nextInt();
+            int b = scanner.nextInt();
+            int c = scanner.nextInt();
+            arr.add(new Edge(a, b, c));
+        }
+
+        int answer = 0;
+        Collections.sort(arr);
+        for(Edge ob : arr){
+            int fv1 = Find(ob.v1);
+            int fv2 = Find(ob.v2);
+            if(fv1 != fv2){
+                answer += ob.cost;
+                Union(ob.v1, ob.v2);
+            }
+        }
+
+        scanner.close();
+
+        System.out.println(answer);
+    }
+}
+```
+
+1. 프림 : PriorityQueue
+
+```java
+package Main;
+
+import java.util.*;
+
+/*
+* 입력 예시
+9 12
+1 2 12
+1 9 25
+2 3 10
+2 8 17
+2 9 8
+3 4 18
+3 7 55
+4 5 44
+5 6 60
+5 7 38
+7 8 35
+8 9 15
+
+* 출력예시
+* 196
+* */
+
+class Edge implements Comparable<Edge>{
+    public int vex;
+    public int cost;
+
+    Edge(int vex, int cost){
+        this.vex  = vex;
+        this.cost = cost;
+    }
+
+    @Override
+    public int compareTo(Edge ob){
+        return this.cost - ob.cost;
+    }
+}
+
+/*
+* 그래프에서 하나의 꼭짓점을 선택하여 트리를 만든다.
+* 선택한 간선의 정점으로부터 가장 낮은 가중치를 갖는 정점을 선택한다.
+* 모든 정점이 선택될 때까지 반복한다.
+* */
+class Main {
+    static int[] ch;
+    public static void main(String[] args){
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int m = scanner.nextInt();
+        //인접리스트
+        ArrayList<ArrayList<Edge>> graph = new ArrayList<ArrayList<Edge>>();
+        
+        for(int i=0; i<=n; i++){
+            graph.add(new ArrayList<Edge>());
+        }
+
+        int [] ch = new int[n+1];
+        for(int i=0; i<m; i++){
+            int a = scanner.nextInt();
+            int b = scanner.nextInt();
+            int c = scanner.nextInt();
+            //무방향 그래프이므로
+            graph.get(a).add(new Edge(b, c));
+            graph.get(b).add(new Edge(a, c));
+        }
+
+        int answer=0;
+        PriorityQueue<Edge> pQ = new PriorityQueue<Edge>();
+        //1번 정점부터 출발 비용은 0
+        pQ.offer(new Edge(1, 0));
+        while (!pQ.isEmpty()){
+            Edge tmp = pQ.poll();
+            int ev = tmp.vex;
+            //방문한곳 1로 체크
+            if(ch[ev] == 0){
+                ch[ev] = 1;
+                answer += tmp.cost;
+                for(Edge ob : graph.get(ev)){
+                    //방문안한 간선만 넣어야하는 분기처리
+                    if(ch[ob.vex] == 0 ) pQ.offer(new Edge(ob.vex, ob.cost));
+                }
+            }
+        }
+
+        System.out.println(answer);
     }
 }
 ```
