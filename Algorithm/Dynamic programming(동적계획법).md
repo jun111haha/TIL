@@ -56,7 +56,7 @@ class Main {
 
 ## **2. 돌다리 건너기**
 
-설명
+- 설명
 
 철수는 학교에 가는데 개울을 만났습니다. 개울은 N개의 돌로 다리를 만들어 놓았습니다.
 
@@ -66,11 +66,11 @@ class Main {
 
 ![https://cote.inflearn.com/public/upload/d7efa0719e.jpg](https://cote.inflearn.com/public/upload/d7efa0719e.jpg)
 
-입력
+- 입력
 
 첫째 줄은 돌의 개수인 자연수 N(3≤N≤35)이 주어집니다.
 
-출력
+- 출력
 
 첫 번째 줄에 개울을 건너는 방법의 수를 출력합니다.
 
