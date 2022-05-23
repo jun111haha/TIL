@@ -281,3 +281,80 @@ class Main {
     }
 }
 ```
+
+## **5. 동전교환(냅색 알고리즘)**
+
+- 설명
+
+다음과 같이 여러 단위의 동전들이 주어져 있을때 거스름돈을 가장 적은 수의 동전으로 교환해주려면 어떻게 주면 되는가?
+
+각 단위의 동전은 무한정 쓸 수 있다.
+
+- 입력
+
+첫 번째 줄에는 동전의 종류개수 N(1<=N<=50)이 주어진다.
+
+두 번째 줄에는 N개의 동전의 종류가 주어지고, 그 다음줄에 거슬러 줄 금액 M(1<=M<=500)이 주어진다.
+
+각 동전의 종류는 100원을 넘지 않는다.
+
+- 출력
+
+첫 번째 줄에 거슬러 줄 동전의 최소개수를 출력한다.
+
+```java
+package Main;
+
+import java.util.*;
+
+/*
+* 입력 예시
+3
+1 2 5
+15
+
+* 출력예시
+* 3
+* */
+
+class Main {
+    static int[] dy;
+    static int n, m;
+    public static int solution(int[] coin){
+        //dy 를 큰숫자로 다 초기화
+        Arrays.fill(dy , Integer.MAX_VALUE);
+        dy[0] = 0;
+        /*
+        * 동전의 갯수 n
+        * 거슬러줄 갯수 m
+        * j 는 동전의 금액부터 거슬러줄 금액까지 dy 의 값을 기존값보다 작으면 교체
+        * dy[i]: i 금액을 만드는데 드는 최소 동전 개수
+        * */
+        for(int i=0; i<n; i++){
+            /*
+            * 2 원부터 돈다고 치면 j - coin[i]
+            * j 원을 만드는데, coin[i] 단위를 한번 사용
+            * 그 금액만큼 뺀다. +1 하는이유? 갯수니까.
+            * */
+            for(int j=coin[i]; j<=m; j++){
+                dy[j] = Math.min(dy[j], dy[j - coin[i]] + 1);
+            }
+        }
+        return dy[m];
+
+    }
+    public static void main(String[] args){
+      Scanner scanner = new Scanner(System.in);
+      n = scanner.nextInt();
+      int[] arr = new int[n];
+      for(int i =0; i<n; i++){
+          arr[i] = scanner.nextInt();
+      }
+
+      m = scanner.nextInt();
+      dy = new int[m + 1];
+
+      System.out.println(solution(arr));
+    }
+}
+```
