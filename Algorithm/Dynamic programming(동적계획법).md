@@ -334,7 +334,7 @@ class Main {
             /*
             * 2 원부터 돈다고 치면 j - coin[i]
             * j 원을 만드는데, coin[i] 단위를 한번 사용
-            * 그 금액만큼 뺀다. +1 하는이유? 갯수니까.
+            * 그 금액만큼 뺀다. +1 하는이유? 동전갯수니까.
             * */
             for(int j=coin[i]; j<=m; j++){
                 dy[j] = Math.min(dy[j], dy[j - coin[i]] + 1);
