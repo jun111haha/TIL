@@ -1,6 +1,3 @@
-# TIL
-Today I Learn
-
 ## Algorithm
 - [DFS/BFS 활용](https://github.com/jun111haha/TIL/blob/main/Algorithm/DFS%2C%20BFS%20%ED%99%9C%EC%9A%A9.md) 
 - [Dynamic programming(동적계획법)](https://github.com/jun111haha/TIL/blob/main/Algorithm/Dynamic%20programming(%EB%8F%99%EC%A0%81%EA%B3%84%ED%9A%8D%EB%B2%95).md)
