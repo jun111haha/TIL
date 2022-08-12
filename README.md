@@ -15,5 +15,5 @@
 ## JS
 - [호이스팅](https://github.com/jun111haha/TIL/blob/main/JavaScript/%ED%98%B8%EC%9D%B4%EC%8A%A4%ED%8C%85.md)
 
-##CS
+## CS
 - [HTTP 프로토콜](https://github.com/jun111haha/TIL/blob/main/CS/HTTP%20%ED%94%84%EB%A1%9C%ED%86%A0%EC%BD%9C.md)
