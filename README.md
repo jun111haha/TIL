@@ -11,7 +11,7 @@
 ## JAVA
 - [Unmanaged언어 vs Managed언어](https://github.com/jun111haha/TIL/blob/main/JAVA/1.%20Unmanaged%EC%96%B8%EC%96%B4%20vs%20Managed%EC%96%B8%EC%96%B4.md)
 - [객체지향 종류](https://github.com/jun111haha/TIL/blob/main/JAVA/2.%20%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5%20%EC%A2%85%EB%A5%98.md)
-- [default 메서드](https://github.com/jun111haha/TIL/edit/main/JAVA/3.%20default%20%EB%A9%94%EC%84%9C%EB%93%9C.md)
+- [default 메서드](https://github.com/jun111haha/TIL/blob/main/JAVA/3.%20default%20%EB%A9%94%EC%84%9C%EB%93%9C.md)
 
 ## JS
 - [호이스팅](https://github.com/jun111haha/TIL/blob/main/JavaScript/%ED%98%B8%EC%9D%B4%EC%8A%A4%ED%8C%85.md)
