@@ -48,7 +48,7 @@ filterApples에서 ApplePredicate 객체를 받아 애플의 조건을 검사하
 
 이렇게 하면 filterApples 메서드 내부에서 컬렉션을 반복하는 로직과 컬렉션의 각 요소에 적용할 동작(우리 예제에서는 프레디케이트)을 분리할 수 있다는 점에서 소프트웨어 엔지니어링적으로 큰 이득을 얻는다.
 
-
+## 추상적 조건으로 필터링
 ```java
   public List<Apple> filterApples(List<Apple> inventory, ApplePredicate applePredicate) {
       final var result = new ArrayList<Apple>();
@@ -60,7 +60,6 @@ filterApples에서 ApplePredicate 객체를 받아 애플의 조건을 검사하
       return result;
   }
 ```
-## 추상적 조건으로 필터링
 1. 필요한 조건에 따라 ApplePredicate를 만들어서 filterApples 메서드에 전달해 주기만 하면 된다.
 2. 이렇게 우리가 전달한 ApplePredicate 객체에 의해 filterApples 메서드의 동작이 결정된다.
 
