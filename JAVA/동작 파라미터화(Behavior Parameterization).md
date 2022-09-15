@@ -34,6 +34,9 @@
       }
   }
 ```
+<img width="741" alt="스크린샷 2022-09-15 오후 11 31 16" src="https://user-images.githubusercontent.com/59434443/190434094-6a3090e3-3a7b-4888-a967-a4bb6ef5563e.png">
+
+
 <img width="734" alt="스크린샷 2022-09-15 오후 11 31 23" src="https://user-images.githubusercontent.com/59434443/190432841-5890b4df-0126-498b-9c60-93ff34e8df48.png">
 
 위 조건에 따라 filter 메서드가 다르게 동작할 것이라고 예상할 수 있다.
