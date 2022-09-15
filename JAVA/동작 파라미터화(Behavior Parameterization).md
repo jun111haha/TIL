@@ -34,6 +34,21 @@
       }
   }
 ```
+
+<img width="676" alt="스크린샷 2022-09-15 오후 11 49 03" src="https://user-images.githubusercontent.com/59434443/190435452-f9e73432-432e-48c1-8d70-2d49d11b3771.png">
+
+위 조건에 따라 filter 메서드가 다르게 동작할 것이라고 예상할 수 있다.
+
+이를 전략 디자인 패턴(strategy design pattern)이라고 부른다.
+
+> 전략 디자인 패턴은 각 알고리즘(전략이라 불리는)을 캡슐화하는 알고리즘 패밀리를 정의해둔 다음에 런타임에 알고리즘을 선택하는 기법이다.
+filterApples에서 ApplePredicate 객체를 받아 애플의 조건을 검사하도록 메서드를 고쳐야 한다.
+
+이렇게 동작 파라미터화, 즉 메서드가 다양한 동작(또는 전략)을 받아서 내부적으로 다양한 동작을 수행할 수 있다.   
+
+이렇게 하면 filterApples 메서드 내부에서 컬렉션을 반복하는 로직과 컬렉션의 각 요소에 적용할 동작(우리 예제에서는 프레디케이트)을 분리할 수 있다는 점에서 소프트웨어 엔지니어링적으로 큰 이득을 얻는다.
+
+
 ```java
   public List<Apple> filterApples(List<Apple> inventory, ApplePredicate applePredicate) {
       final var result = new ArrayList<Apple>();
@@ -67,18 +82,6 @@
 Java 8에 새롭게 추가된 람다 표현식을 이용하게 되면 여러 개의 ApplePredicate를 정의하지 않고도 test 메서드의 내부 구현 filter 메서드로 전달할 수 있다.
 
 <img width="734" alt="스크린샷 2022-09-15 오후 11 31 23" src="https://user-images.githubusercontent.com/59434443/190432841-5890b4df-0126-498b-9c60-93ff34e8df48.png">
-
-위 조건에 따라 filter 메서드가 다르게 동작할 것이라고 예상할 수 있다.
-
-이를 전략 디자인 패턴(strategy design pattern)이라고 부른다.
-
-> 전략 디자인 패턴은 각 알고리즘(전략이라 불리는)을 캡슐화하는 알고리즘 패밀리를 정의해둔 다음에 런타임에 알고리즘을 선택하는 기법이다.
-filterApples에서 ApplePredicate 객체를 받아 애플의 조건을 검사하도록 메서드를 고쳐야 한다.
-
-
-이렇게 동작 파라미터화, 즉 메서드가 다양한 동작(또는 전략)을 받아서 내부적으로 다양한 동작을 수행할 수 있다.   
-
-이렇게 하면 filterApples 메서드 내부에서 컬렉션을 반복하는 로직과 컬렉션의 각 요소에 적용할 동작(우리 예제에서는 프레디케이트)을 분리할 수 있다는 점에서 소프트웨어 엔지니어링적으로 큰 이득을 얻는다.
 
 ## 출처
 모던 자바 인액션
