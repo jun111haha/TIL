@@ -34,8 +34,37 @@
       }
   }
 ```
+```java
+  public List<Apple> filterApples(List<Apple> inventory, ApplePredicate applePredicate) {
+      final var result = new ArrayList<Apple>();
+      for (final var apple : inventory) {
+          if (applePredicate.test(apple)) {
+              result.add(apple);
+          }
+      }
+      return result;
+  }
+```
+3. 필요한 조건에 따라 ApplePredicate를 만들어서 filterApples 메서드에 전달해 주기만 하면 된다.
+4. 이렇게 우리가 전달한 ApplePredicate 객체에 의해 filterApples 메서드의 동작이 결정된다.
+
+```java
+ public class AppleRedAndHeavyPredicate implements ApplePredicate {
+        @Override
+        public boolean test(Apple apple) {
+            return RED.equals(apple.color()) &&
+                    apple.weight() > 180;
+        }
+    }
+```
+
 <img width="741" alt="스크린샷 2022-09-15 오후 11 31 16" src="https://user-images.githubusercontent.com/59434443/190434094-6a3090e3-3a7b-4888-a967-a4bb6ef5563e.png">
 
+위의 그림에서 보여주는 것처럼 ApplePredicate의 실제 구현은 test 메서드에 있다.
+
+안타깝게도 메서드는 객체만 인수로 받으므로 test 메서드를 ApplePredicate 객체로 감싸서 전달해야 한다.
+
+Java 8에 새롭게 추가된 람다 표현식을 이용하게 되면 여러 개의 ApplePredicate를 정의하지 않고도 test 메서드의 내부 구현 filter 메서드로 전달할 수 있다.
 
 <img width="734" alt="스크린샷 2022-09-15 오후 11 31 23" src="https://user-images.githubusercontent.com/59434443/190432841-5890b4df-0126-498b-9c60-93ff34e8df48.png">
 
