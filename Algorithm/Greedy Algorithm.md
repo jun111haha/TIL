@@ -22,9 +22,6 @@
 
 그리디 알고리즘에서 고려해야 하는 상황은 값들이 서로 영향을 주면 안된다는 것을 염두에 두어야 합니다. 위에서 사용한 예시를 한번 더 사용해 설명해보겠습니다!
 
-우선 그리디 알고리즘이 도출한 최종 Path는 "시작 - 17 - 23" 입니다.
-이때 "6" 아래의 "128"이라는 값이 있어서 Path를 변경할 수 없다는 것입니다.
-
 ![pasted image 0](https://user-images.githubusercontent.com/59434443/191036214-04eae9c5-e6d4-445a-91fe-f83b9aeb232a.png)
 ![pasted image 0 (1)](https://user-images.githubusercontent.com/59434443/191036263-69764a99-6938-40c6-9d84-ecd0a9f86c33.png)
 
