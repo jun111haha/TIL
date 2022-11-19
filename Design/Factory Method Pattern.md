@@ -16,6 +16,7 @@ abstract class Coffee {
         return "Hi this coffee is "+ this.getPrice();
     }
 }
+
 class CoffeeFactory { 
     public static Coffee getCoffee(String type, int price){
         if("Latte".equalsIgnoreCase(type)) return new Latte(price);
@@ -25,6 +26,7 @@ class CoffeeFactory {
         } 
     }
 }
+
 class DefaultCoffee extends Coffee {
     private int price;
 
@@ -37,6 +39,7 @@ class DefaultCoffee extends Coffee {
         return this.price;
     }
 }
+
 class Latte extends Coffee { 
     private int price; 
     
@@ -48,6 +51,7 @@ class Latte extends Coffee {
         return this.price;
     } 
 }
+
 class Americano extends Coffee { 
     private int price; 
     
@@ -59,6 +63,7 @@ class Americano extends Coffee {
         return this.price;
     } 
 } 
+
 public class HelloWorld{ 
      public static void main(String []args){ 
         Coffee latte = CoffeeFactory.getCoffee("Latte", 4000);
@@ -67,10 +72,12 @@ public class HelloWorld{
         System.out.println("Factory ame ::"+ame); 
      }
 } 
+
 /*
 Factory latte ::Hi this coffee is 4000
 Factory ame ::Hi this coffee is 3000
 */
+
 ```
 - CoffeFactory 라는 상위 클래스가 중요한 뼈대를 결정하고 하위 클래스인 LatteFactory 가 구체적인 내용을 결정하고 있습니다. 이는 의존성 주입이라고도 볼 수 있습니다.
 CoffeFactory 에서 LatteFactory 의 인스턴스를 생성하는 것이 아닌 LatteFactory 에서 생성한 인스턴스를 CoffeFactory 에 주입하고 있기 때문이다.
