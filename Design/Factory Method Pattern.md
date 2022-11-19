@@ -5,7 +5,7 @@
 객체 생성에 관한 구체적은 내용을 결정하는 패턴이다. 상위 클래스와 하위 클래스가 분리되기 때문에 느슨한 결합을 가지며 상위 클래스에서는 인스턴스 생성 방식에 대해 전혀 알 필요가 없기 때문에
 더 많은 유연성을 갖게 된다. 그리고 객체 생성 로직이 떼어져 있기 때문에 코드를 리팩터링하더라도 한 곳만 고치면 되기 떄문에 유지 보수성이 증가.
 
-![factorymethodpattern](./img/factory_method_pattern.png)
+![factorymethodpattern](https://github.com/jun111haha/TIL/blob/main/img/factory_method_pattern.png)
 
 ```java
 abstract class Coffee { 
