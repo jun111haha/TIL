@@ -7,7 +7,42 @@
 
 ![factorymethodpattern](https://github.com/jun111haha/TIL/blob/main/img/factory_method_pattern.png)
 
-** 정적 팩토리 메서드란? 객체 생성의 역할을 하는 클래스 메서드 **
+**정적 팩토리 메서드란? 객체 생성의 역할을 하는 클래스 메서드**
+
+## 생성자와는 어떤 차이가 있나?
+1. 이름을 가질 수 있다.
+객체는 생성 목적과 과정에 따라 생성자를 구별해서 사용할 필요가 있다. new라는 키워드를 통해 객체를 생성하는 생성자는 내부 구조를 잘 알고 있어야 목적에 맞게 객체를 생성할 수 있다.    하지만 정적 팩토리 메서드를 사용하면 메서드 이름에 객체의 생성 목적을 담아 낼 수 있다.
+   
+다음 주어진 자동로또와 수동로또를 생성하는 팩토리 클래스의 일부 코드를 살펴보자.
+
+```java
+public class LottoFactory() {
+  private static final int LOTTO_SIZE = 6;
+
+  private static List<LottoNumber> allLottoNumbers = ...; // 1~45까지의 로또 넘버
+
+  public static Lotto createAutoLotto() {
+    Collections.shuffle(allLottoNumbers);
+    return new Lotto(allLottoNumbers.stream()
+            .limit(LOTTO_SIZE)
+            .collect(Collectors.toList()));
+  }
+
+  public static Lotto createManualLotto(List<LottoNumber> lottoNumbers) {
+    return new Lotto(lottoNumbers);
+  }
+  ...
+}
+```
+createAutoLotto와 createMenualLotto 모두 로또 객체를 생성하고 반환하는 정적 팩토리 메서드이다. 메서드의 이름만 보아도 로또 객체를 자동으로 생성하는지,    
+아니면 수동으로 생성하는지 단번에 이해할 수 있을 것이다.   
+   
+이처럼 정적 팩토리 메서드를 사용하면 해당 생성의 목적을 이름에 표현할 수 있어 가독성이 좋아지는 효과가 있다.
+
+2. 호출할 때마다 새로운 객체를 생성할 필요가 없다.
+enum과 같이 자주 사용되는 요소의 개수가 정해져있다면 해당 개수만큼 미리 생성해놓고 조회(캐싱)할 수 있는 구조로 만들수 있다.    
+정적 팩터리 메서드와 캐싱구조를 함께 사용하면 매번 새로운 객체를 생성할 필요가 없어진다.
+
 
 ```java
 abstract class Coffee { 
@@ -85,3 +120,5 @@ Factory ame ::Hi this coffee is 3000
 CoffeFactory 에서 LatteFactory 의 인스턴스를 생성하는 것이 아닌 LatteFactory 에서 생성한 인스턴스를 CoffeFactory 에 주입하고 있기 때문이다.
 또한 CoffeFactory 를 보면 static 으로 getCoffe() 정적 메서드를 정의한 것을 알 수 있는데, 정적 메서드를 쓰면 클래스의 인스턴스 없이 호출이 가능하며
 메모리를 절약 할 수 있고 인스턴스에 묶이지 않는다. 
+
+출처 : https://tecoble.techcourse.co.kr/post/2020-05-26-static-factory-method/ , 면접을 위한 CS 전공지식
