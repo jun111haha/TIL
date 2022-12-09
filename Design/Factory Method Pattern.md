@@ -7,6 +7,8 @@
 
 ![factorymethodpattern](https://github.com/jun111haha/TIL/blob/main/img/factory_method_pattern.png)
 
+** 정적 팩토리 메서드란? 객체 생성의 역할을 하는 클래스 메서드 **
+
 ```java
 abstract class Coffee { 
     public abstract int getPrice(); 
