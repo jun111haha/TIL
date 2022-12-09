@@ -54,4 +54,4 @@ Validator lowerCaseValidator = new Validator((String s) -> s.matches("\\d+")); /
 boolean b2 = lowerCaseValidator.validate("aaaa"); //true
 ```
 
-- 출처 : 자바 인 액션
+출처 : 자바 인 액션
