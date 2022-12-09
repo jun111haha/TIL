@@ -44,4 +44,7 @@ boolean b1 = lowerCaseValidator.validate("bbbb"); //true
 
 - 람다 표현식으로 사용
 ValidationStrategy 는 함수형 인터페이스며 Predicate<String> 과 같은 함수 디스크립터를 갖고 있음을 파악 했다.   
-따라서 다양한 전략을 구현하는 새로운 클래스를 구현할 필요 없이 람다 표현식을 직접 전달하면 코드가 간결해진다.   
+따라서 다양한 전략을 구현하는 새로운 클래스를 구현할 필요 없이 람다 표현식을 직접 전달하면 코드가 간결해진다.
+```java
+fff
+```
