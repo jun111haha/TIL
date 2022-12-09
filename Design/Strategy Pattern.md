@@ -53,3 +53,5 @@ boolean b1 = numericValidator.validate("aaaa"); //fasle
 Validator lowerCaseValidator = new Validator((String s) -> s.matches("\\d+")); //람다를 직접 전달
 boolean b2 = lowerCaseValidator.validate("aaaa"); //true
 ```
+<hr>
+-출처 : 자바 인 액션
