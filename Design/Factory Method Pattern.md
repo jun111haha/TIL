@@ -12,8 +12,6 @@
 ## 생성자와는 어떤 차이가 있나?
 1. 이름을 가질 수 있다.
 객체는 생성 목적과 과정에 따라 생성자를 구별해서 사용할 필요가 있다. new라는 키워드를 통해 객체를 생성하는 생성자는 내부 구조를 잘 알고 있어야 목적에 맞게 객체를 생성할 수 있다.    하지만 정적 팩토리 메서드를 사용하면 메서드 이름에 객체의 생성 목적을 담아 낼 수 있다.
-   
-다음 주어진 자동로또와 수동로또를 생성하는 팩토리 클래스의 일부 코드를 살펴보자.
 
 ```java
 public class LottoFactory() {
@@ -42,6 +40,78 @@ createAutoLotto와 createMenualLotto 모두 로또 객체를 생성하고 반환
 2. 호출할 때마다 새로운 객체를 생성할 필요가 없다.
 enum과 같이 자주 사용되는 요소의 개수가 정해져있다면 해당 개수만큼 미리 생성해놓고 조회(캐싱)할 수 있는 구조로 만들수 있다.    
 정적 팩터리 메서드와 캐싱구조를 함께 사용하면 매번 새로운 객체를 생성할 필요가 없어진다.
+
+```java
+public class LottoNumber {
+  private static final int MIN_LOTTO_NUMBER = 1;
+  private static final int MAX_LOTTO_NUMBER = 45;
+
+  private static Map<Integer, LottoNumber> lottoNumberCache = new HashMap<>();
+
+  static {
+    IntStream.range(MIN_LOTTO_NUMBER, MAX_LOTTO_NUMBER)
+                .forEach(i -> lottoNumberCache.put(i, new LottoNumber(i)));
+  }
+
+  private int number;
+
+  private LottoNumber(int number) {
+    this.number = number;
+  }
+
+  public LottoNumber of(int number) {  // LottoNumber를 반환하는 정적 팩토리 메서드
+    return lottoNumberCache.get(number);
+  }
+
+  ...
+}
+```
+객체의 캐싱을 통해서 새로운 객체 생성의 부담을 덜 수 있다는 장점도 있지만, 생성자의 접근 제한자를 private으로 설정함으로써.  
+객체 생성을 정적 팩토리 메서드로만 가능하도록 제한할 수 있다는 것이다. 이를 통해 정해진 범위를 벗어나는 로또 번호의 생성을 막을 수 있다는 장점을 확보할 수 있다.
+
+3. 하위 자료형 객체를 반환할 수 있다.
+하위 자료형 객체를 반환하는 정적 팩토리 메서드의 특징은 상속을 사용할 때 확인할 수 있다. 이는 생성자의 역할을 하는 정적 팩토리 메서드가 반환값을 가지고 있기 때문에 가능한 특징이다.
+
+Basic, Intermediate, Advanced 클래스가 Level라는 상위 타입을 상속받고 있는 구조를 생각.     
+시험 점수에 따라 결정되는하위 등급 타입을 반환하는 정적 팩토리 메서드를 만들면, 다음과 같이 분기처리를 통해 하위 타입의 객체를 반환할 수 있다.
+```java
+public class Level {
+  ...
+  public static Level of(int score) {
+    if (score < 50) {
+      return new Basic();
+    } else if (score < 80) {
+      return new Intermediate();
+    } else {
+      return new Advanced();
+    }
+  }
+  ...
+}
+```
+
+4. 객체 생성을 캡슐화 할 수 있다.
+DTO와 Entity간에는 자유롭게 형 변환이 가능해야 하는데, 정적 팩터리 메서드를 사용하면 내부 구현을 모르더라도 쉽게 변환할 수 있다.
+
+```java
+public class CarDto {
+  private String name;
+  private int position;
+
+  pulbic static CarDto from(Car car) {
+    return new CarDto(car.getName(), car.getPosition());
+  }
+}
+
+
+// Car -> CatDto 로 변환
+CarDto carDto = CarDto.from(car);
+```
+
+```java
+Car carDto = CarDto.from(car); // 정적 팩토리 메서드를 쓴 경우
+CarDto carDto = new CarDto(car.getName(), car.getPosition); // 생성자를 쓴 경우
+```
 
 
 ```java
