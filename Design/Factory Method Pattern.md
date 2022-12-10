@@ -89,7 +89,6 @@ public class Level {
   ...
 }
 ```
-
 4. 객체 생성을 캡슐화 할 수 있다.
 DTO와 Entity간에는 자유롭게 형 변환이 가능해야 하는데, 정적 팩터리 메서드를 사용하면 내부 구현을 모르더라도 쉽게 변환할 수 있다.
 
@@ -112,6 +111,8 @@ CarDto carDto = CarDto.from(car);
 Car carDto = CarDto.from(car); // 정적 팩토리 메서드를 쓴 경우
 CarDto carDto = new CarDto(car.getName(), car.getPosition); // 생성자를 쓴 경우
 ```
+
+<hr>
 
 
 ```java
