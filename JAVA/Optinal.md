@@ -27,7 +27,7 @@ null 을 가져야 할 것이다. 하지만 새로운 Optinal을 이용할 수 �
   }
   
   public class Insurance {
-   private String name;
+   private String name; //보험회사는 반드시 존재
    public String getName(){
      return name;
      }
