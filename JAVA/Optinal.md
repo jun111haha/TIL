@@ -12,24 +12,24 @@ null 을 가져야 할 것이다. 하지만 새로운 Optinal을 이용할 수 �
 값이 없으면 Optinal.empty 메서드로 Optinal 을 반환한다. 특별한 싱글턴 인스턴스를 반화하는 정적 팩토리 메서드임.
 
  ```java
-  public class Peron{
-    private Optinal<Car> car; //사람이 차를 소유했을 수도 소유하지 않았을 수도 있으므로 Optinal 로 정의
-    public Optinal<Car> getCar(){
-      return car;
-    }
-  }
+ public class Peron {
+   private Optinal<Car> car; //사람이 차를 소유했을 수도 소유하지 않았을 수도 있으므로 Optinal 로 정의
+   public Optinal<Car> getCar(){
+     return car;
+   }
+ }
   
-  public class Car{
+ public class Car {
   private Optinal<Insurance> Insurance; //자동차가 보험을 가입했을수도 안했을수도 있으므로 Optinal 로 정의
   public Optinal<Insurance> getInsurance(){
     return insurance;
     }
   }
   
-  public class Insurance{
-  private String name;
-  public String getName(){
-    return name;
-    }
+  public class Insurance {
+   private String name;
+   public String getName(){
+     return name;
+     }
   }
  ```
