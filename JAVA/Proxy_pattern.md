@@ -57,6 +57,6 @@ public class Main {
 3. 캐시를 사용할 수 있다.
 - 프록시가 내부캐시를 통해 데이터가 캐시에 존재하지 않는 경우에만 주체클래스에서 작업이 실행되도록 할 수 있다. 
 
-출처 : https://refactoring.guru/design-patterns/proxy
+출처 : https://refactoring.guru/design-patterns/proxy   
 출처 : 백기선 더자바를 조작하는 방법
 
