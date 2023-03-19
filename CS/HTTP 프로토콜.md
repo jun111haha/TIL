@@ -28,7 +28,6 @@ DNS recursor에서 root name server로 연락을 합니다. root name server는 
 
 ## 브라우저가 웹서버에 HTTP 요청
 1. 연결이 되었다면 데이터를 전송합니다. 클라이언트의 브라우저는 HTTP 프로토콜로 GET 요청을 통해 서버에게 www.google.com의 웹페이지 데이터를 요구합니다.
-- 연결이 되었다면 데이터를 전송합니다. 클라이언트의 브라우저는 HTTP 프로토콜로 GET 요청을 통해 서버에게 www.google.com의 웹페이지 데이터를 요구합니다.
 2. 서버가 request를 처리하고 response를 생성합니다.
 - 서버는 브라우저로부터 request를 받아 처리합니다. 그리고 response를 생성해서 보내줍니다. request에서는 http 요청을 통해 받아온 다양한 헤더 정보와 데이터들로 요청을 처리하고 response를 생성합니다. 이때 response는 특정한 포멧 (JSON, XML, HTML ) 등으로 작성
 3. 서버가 HTTP response를 보냅니다.
