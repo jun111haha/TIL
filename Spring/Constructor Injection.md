@@ -11,7 +11,7 @@
 - 스프링이 없이 코드가 작성되면 더욱 유연한 코드를 확보하게 된다. 프레임워크가 자주 바뀌는 것도 아니므로 비록 스프링 코드가 침투하는게 치명적인 문제는 아니긴하다. 하지만 그래도 더 좋은 방법(생성자 주입)이 있는데, 굳이 사용할 필요는 없다.
 5. 생성자 주입을 사용하면 애플리케이션 구동 시점(객체의 생성 시점)에 순환 참조 에러를 예방할수 있다
 
-```
+```java
 @Service
 public class UserService {
 
@@ -38,4 +38,4 @@ public class MemberService {
 }
 
 new UserService(new MemberService(new UserService(new MemberService()...))) //이런식으로 스택오버플로우 발생 -> 서버가죽음
-```java
+```
